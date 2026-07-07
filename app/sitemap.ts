@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { artists } from "@/lib/artists";
 
-const BASE = "https://danrecords.com"; // TODO: dominio final
+const BASE = "https://dan-creative.com"; // TODO: dominio final
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [

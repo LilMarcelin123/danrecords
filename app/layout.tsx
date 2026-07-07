@@ -7,7 +7,7 @@ const display = Syne({ subsets: ["latin"], variable: "--font-display", weight: [
 const body = Instrument_Sans({ subsets: ["latin"], variable: "--font-body" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://danrecords.com"), // TODO: dominio final
+  metadataBase: new URL("https://dan-creative.com"), // TODO: dominio final
   title: {
     default: "DanRecords — Música, tecnología y creatividad",
     template: "%s · DanRecords",
