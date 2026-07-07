@@ -1,13 +1,14 @@
 "use client";
 
 /* eslint-disable @next/next/no-img-element */
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Artist } from "@/lib/artists";
 
 /**
- * Fotografia del artista. Mientras no exista public/artists/{slug}.jpg,
- * se muestra el gradiente propio del artista (la imagen solo aparece cuando carga,
- * asi nunca se ve el texto alt de una imagen rota).
+ * Fotografia del artista con fade-in al cargar.
+ * Importante: si la imagen termino de cargar ANTES de la hidratacion de React
+ * (caso tipico en produccion), el evento onLoad nunca llega — por eso al montar
+ * verificamos img.complete y marcamos loaded manualmente.
  */
 export default function ArtistPhoto({
   artist,
@@ -23,12 +24,19 @@ export default function ArtistPhoto({
   fit?: "cover" | "natural";
 }) {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
   const src = artist.photo ?? `/artists/${artist.slug}.jpg`;
+
+  // Si la imagen ya estaba completa al hidratar, onLoad no se dispara: cubrirlo aqui.
+  useEffect(() => {
+    const img = imgRef.current;
+    if (img && img.complete && img.naturalWidth > 0) setLoaded(true);
+  }, []);
 
   if (fit === "natural") {
     return (
-      /* eslint-disable-next-line @next/next/no-img-element */
       <img
+        ref={imgRef}
         src={src}
         alt={artist.name}
         loading={eager ? "eager" : "lazy"}
@@ -45,6 +53,7 @@ export default function ArtistPhoto({
       style={{ background: `linear-gradient(160deg, ${artist.palette[0]}, ${artist.palette[1]})` }}
     >
       <img
+        ref={imgRef}
         src={src}
         alt={artist.name}
         loading={eager ? "eager" : "lazy"}
