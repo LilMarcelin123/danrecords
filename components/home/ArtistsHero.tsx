@@ -91,9 +91,6 @@ export default function ArtistsHero() {
         className="pointer-events-none absolute inset-x-0 bottom-0 z-20 mx-auto flex max-w-7xl flex-col gap-6 px-6 pb-12 md:flex-row md:items-end md:justify-between md:pb-16"
       >
         <div>
-          <p className="mb-3 font-display text-xs uppercase tracking-[0.45em] text-accent">
-            Dan Creative · DanRecords
-          </p>
           <h1 className="font-display text-4xl font-extrabold leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
             Música, tecnología
             <br />

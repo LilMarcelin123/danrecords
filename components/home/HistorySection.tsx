@@ -1,6 +1,9 @@
 import { timeline, team } from "@/lib/history";
 import Reveal from "@/components/Reveal";
 
+/** Sección "El equipo" desactivada temporalmente (nombres de ejemplo). */
+const SHOW_TEAM = false;
+
 /**
  * HISTORY — el lado humano de DanRecords (estilo editorial):
  * carta del fundador con su foto, linea de tiempo con años en outline gigante
@@ -120,39 +123,43 @@ export default function HistorySection() {
           })}
         </div>
 
-        {/* Equipo */}
-        <Reveal>
-          <h3 className="mb-8 mt-24 font-display text-2xl font-bold md:text-3xl">El equipo</h3>
-        </Reveal>
-        <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {team.map((m, i) => (
-            <Reveal key={m.name} delay={i * 0.08}>
-              <article className="group h-full overflow-hidden rounded-xl2 border border-line bg-panel transition-all duration-500 ease-cine hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,0,0,0.45)]">
-                {m.photo ? (
-                  /* eslint-disable-next-line @next/next/no-img-element */
-                  <img
-                    src={m.photo}
-                    alt={m.name}
-                    loading="lazy"
-                    decoding="async"
-                    className="block h-auto w-full"
-                  />
-                ) : (
-                  <div
-                    className="h-56 w-full"
-                    style={{ background: `linear-gradient(160deg, ${m.palette[0]}, ${m.palette[1]})` }}
-                  />
-                )}
-                <div className="p-5">
-                  <h4 className="font-display text-lg font-bold">{m.name}</h4>
-                  <p className="text-sm text-accent">{m.role}</p>
-                  <p className="mt-1 text-xs uppercase tracking-[0.15em] text-mute">{m.specialty}</p>
-                  <p className="mt-3 text-sm leading-relaxed text-mute">{m.bio}</p>
-                </div>
-              </article>
-            </Reveal>
-          ))}
-        </div>
+        {/* Equipo — OCULTO por ahora (SHOW_TEAM = false). Cambiar a true cuando estén los datos reales. */}
+        {SHOW_TEAM && (
+          <>
+          <Reveal>
+            <h3 className="mb-8 mt-24 font-display text-2xl font-bold md:text-3xl">El equipo</h3>
+          </Reveal>
+          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {team.map((m, i) => (
+              <Reveal key={m.name} delay={i * 0.08}>
+                <article className="group h-full overflow-hidden rounded-xl2 border border-line bg-panel transition-all duration-500 ease-cine hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,0,0,0.45)]">
+                  {m.photo ? (
+                    /* eslint-disable-next-line @next/next/no-img-element */
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      loading="lazy"
+                      decoding="async"
+                      className="block h-auto w-full"
+                    />
+                  ) : (
+                    <div
+                      className="h-56 w-full"
+                      style={{ background: `linear-gradient(160deg, ${m.palette[0]}, ${m.palette[1]})` }}
+                    />
+                  )}
+                  <div className="p-5">
+                    <h4 className="font-display text-lg font-bold">{m.name}</h4>
+                    <p className="text-sm text-accent">{m.role}</p>
+                    <p className="mt-1 text-xs uppercase tracking-[0.15em] text-mute">{m.specialty}</p>
+                    <p className="mt-3 text-sm leading-relaxed text-mute">{m.bio}</p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          </>
+        )}
       </div>
     </section>
   );
