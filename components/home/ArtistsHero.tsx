@@ -94,7 +94,7 @@ export default function ArtistsHero() {
           <p className="mb-3 font-display text-xs uppercase tracking-[0.45em] text-accent">
             Dan Creative · DanRecords
           </p>
-          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-white md:text-7xl lg:text-8xl">
+          <h1 className="font-display text-4xl font-extrabold leading-[0.95] tracking-tight text-white md:text-6xl lg:text-7xl">
             Música, tecnología
             <br />
             <span className="text-white/45">y creatividad.</span>
@@ -102,7 +102,7 @@ export default function ArtistsHero() {
         </div>
         <a
           href="#roster"
-          className="pointer-events-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-ink transition-all duration-300 ease-cine hover:-translate-y-0.5 hover:bg-accent hover:text-white"
+          className="pointer-events-auto inline-flex w-fit shrink-0 items-center whitespace-nowrap gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-ink transition-all duration-300 ease-cine hover:-translate-y-0.5 hover:bg-accent hover:text-white"
         >
           Conoce a los artistas <ArrowUpRight size={18} />
         </a>

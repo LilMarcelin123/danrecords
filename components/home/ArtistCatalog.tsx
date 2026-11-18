@@ -18,7 +18,7 @@ export default function ArtistCatalog() {
         <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="mb-3 font-display text-xs uppercase tracking-[0.45em] text-accent">Artists</p>
-            <h2 className="font-display text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
+            <h2 className="font-display text-4xl font-extrabold leading-none tracking-tight md:text-6xl">
               El corazón
               <br />
               <span className="text-white/40">de DanRecords</span>
@@ -60,7 +60,7 @@ export default function ArtistCatalog() {
                   <p className="mb-2 text-[11px] uppercase tracking-[0.35em] text-accent">{a.genre}</p>
                   <h3
                     className={`font-display font-extrabold leading-none tracking-tight text-white transition-transform duration-500 ease-cine group-hover:-translate-y-1 ${
-                      big ? "text-4xl md:text-6xl" : "text-3xl md:text-4xl"
+                      big ? "text-3xl md:text-5xl" : "text-2xl md:text-3xl"
                     }`}
                   >
                     {a.name}
