@@ -5,14 +5,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0A0A0B",        // negro — solo para la intro y overlays sobre fotos
-        paper: "#FBFBFA",      // fondo base (blanco calido)
-        panel: "#F3F5FB",      // superficies (azul palidisimo)
-        line: "#E3E6EF",       // bordes
-        navy: "#101A38",       // texto principal (azul muy oscuro)
-        mute: "#5C6478",       // texto secundario
+        ink: "#0A0A0B",        // negro profundo — intro y overlays
+        paper: "#07080C",      // fondo base oscuro (continua la intro)
+        panel: "#0E111A",      // superficies / tarjetas
+        line: "#1C2131",       // bordes sutiles
+        navy: "#EEF1F8",       // texto principal (claro sobre oscuro)
+        mute: "#8C94AA",       // texto secundario
         brand: "#173B8F",   // azul Dan Creative (del logo oficial)
-        accent: "#1E4AB8", // azul vivo para links, hovers y acentos sobre blanco
+        accent: "#7C9CF2", // azul claro para links y acentos sobre oscuro
       },
       fontFamily: {
         display: ["var(--font-display)"],

@@ -56,7 +56,7 @@ export default function Navbar() {
       <div className="w-full max-w-4xl">
         <nav
           className={`liquid-glass flex items-center justify-between rounded-full py-2 pl-3 pr-2 transition-shadow duration-500 ${
-            scrolled ? "shadow-[0_16px_44px_rgba(16,26,56,0.16)]" : ""
+            scrolled ? "shadow-[0_16px_44px_rgba(0,0,0,0.5)]" : ""
           }`}
         >
           <Link href="/" className="flex shrink-0 items-center gap-2.5 pl-1">
@@ -76,8 +76,8 @@ export default function Navbar() {
                     href={l.href}
                     className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors duration-300 ${
                       isActive
-                        ? "bg-brand/10 text-brand"
-                        : "text-navy/60 hover:bg-navy/[0.05] hover:text-navy"
+                        ? "bg-white/10 text-white"
+                        : "text-navy/60 hover:bg-white/[0.06] hover:text-navy"
                     }`}
                   >
                     {l.label}
@@ -121,7 +121,7 @@ export default function Navbar() {
                   <Link
                     href={l.href}
                     onClick={() => setOpen(false)}
-                    className="block border-b border-navy/5 py-3.5 font-display text-lg font-semibold text-navy last:border-0"
+                    className="block border-b border-white/5 py-3.5 font-display text-lg font-semibold text-navy last:border-0"
                   >
                     {l.label}
                   </Link>

@@ -44,7 +44,7 @@ export default function PlatformSection() {
   }
 
   const input =
-    "w-full rounded-lg border border-line bg-white px-4 py-3 text-sm placeholder:text-mute focus:border-accent";
+    "w-full rounded-lg border border-line bg-panel px-4 py-3 text-sm placeholder:text-mute focus:border-accent";
 
   return (
     <section id="platform" className="border-t border-line bg-panel/40 py-24">
@@ -232,7 +232,7 @@ function RoleCard({
     <button
       onClick={onClick}
       className={`group rounded-xl2 border p-8 text-left transition-all duration-500 ease-cine ${
-        active ? "border-accent bg-brand/25" : "border-line bg-white hover:border-accent/40"
+        active ? "border-accent bg-brand/25" : "border-line bg-panel hover:border-accent/40"
       }`}
     >
       <h4 className="font-display text-2xl font-bold">{title}</h4>

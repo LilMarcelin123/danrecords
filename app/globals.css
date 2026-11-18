@@ -4,8 +4,8 @@
 
 :root {
   --ink: #0a0a0b;
-  --paper: #fbfbfa;
-  --navy: #101a38;
+  --paper: #07080c;
+  --navy: #eef1f8;
   --brand: #173b8f;
   --accent: #7c9cf2;
 }
@@ -22,8 +22,8 @@ body {
 
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--paper); }
-::-webkit-scrollbar-thumb { background: #d6dae6; border-radius: 8px; }
-::-webkit-scrollbar-thumb:hover { background: #b9c0d4; }
+::-webkit-scrollbar-thumb { background: #22283a; border-radius: 8px; }
+::-webkit-scrollbar-thumb:hover { background: #33405f; }
 
 /* Grano cinematografico muy sutil */
 .grain::after {
@@ -32,7 +32,7 @@ body {
   inset: 0;
   pointer-events: none;
   z-index: 5;
-  opacity: 0.025;
+  opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -43,22 +43,22 @@ body {
 .vinyl-spinning { animation: vinyl-spin 4s linear infinite; }
 
 .glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(16, 20, 32, 0.72);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border: 1px solid rgba(16, 26, 56, 0.08);
-  box-shadow: 0 8px 30px rgba(16, 26, 56, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
 }
 
 /* Liquid glass: pill flotante del header */
 .liquid-glass {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72), rgba(255, 255, 255, 0.55));
-  backdrop-filter: blur(22px) saturate(1.7);
-  -webkit-backdrop-filter: blur(22px) saturate(1.7);
-  border: 1px solid rgba(255, 255, 255, 0.65);
+  background: linear-gradient(180deg, rgba(22, 27, 42, 0.62), rgba(10, 12, 20, 0.5));
+  backdrop-filter: blur(22px) saturate(1.6);
+  -webkit-backdrop-filter: blur(22px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   box-shadow:
-    0 10px 36px rgba(16, 26, 56, 0.12),
-    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    0 10px 36px rgba(0, 0, 0, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
 }
 
 a:focus-visible, button:focus-visible, input:focus-visible,

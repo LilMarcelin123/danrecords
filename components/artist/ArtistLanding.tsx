@@ -197,9 +197,9 @@ export default function ArtistLanding({ artist }: { artist: Artist }) {
                   if (res.ok) setSent(true);
                 }}
               >
-                <input name="nombre" required placeholder="Nombre" className="rounded-lg border border-line bg-white px-4 py-3 text-sm placeholder:text-mute" />
-                <input name="correo" required type="email" placeholder="Correo" className="rounded-lg border border-line bg-white px-4 py-3 text-sm placeholder:text-mute" />
-                <textarea name="mensaje" required rows={4} placeholder="Cuéntanos sobre el evento" className="rounded-lg border border-line bg-white px-4 py-3 text-sm placeholder:text-mute sm:col-span-2" />
+                <input name="nombre" required placeholder="Nombre" className="rounded-lg border border-line bg-panel px-4 py-3 text-sm placeholder:text-mute" />
+                <input name="correo" required type="email" placeholder="Correo" className="rounded-lg border border-line bg-panel px-4 py-3 text-sm placeholder:text-mute" />
+                <textarea name="mensaje" required rows={4} placeholder="Cuéntanos sobre el evento" className="rounded-lg border border-line bg-panel px-4 py-3 text-sm placeholder:text-mute sm:col-span-2" />
                 <button className="rounded-full bg-brand py-3 font-medium text-white transition-transform duration-300 hover:scale-[1.01] sm:col-span-2">
                   Enviar solicitud
                 </button>

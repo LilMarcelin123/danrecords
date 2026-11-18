@@ -127,7 +127,7 @@ export default function HistorySection() {
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
           {team.map((m, i) => (
             <Reveal key={m.name} delay={i * 0.08}>
-              <article className="group h-full overflow-hidden rounded-xl2 border border-line bg-white transition-all duration-500 ease-cine hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(16,26,56,0.08)]">
+              <article className="group h-full overflow-hidden rounded-xl2 border border-line bg-panel transition-all duration-500 ease-cine hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,0,0,0.45)]">
                 {m.photo ? (
                   /* eslint-disable-next-line @next/next/no-img-element */
                   <img

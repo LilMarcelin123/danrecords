@@ -31,7 +31,7 @@ export default async function NewsSection() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {items.map((n, i) => (
             <Reveal key={n.id} delay={i * 0.08}>
-              <article className="group flex h-full flex-col overflow-hidden rounded-xl2 border border-line bg-white transition-all duration-500 ease-cine hover:-translate-y-1.5 hover:shadow-[0_18px_40px_rgba(16,26,56,0.10)]">
+              <article className="group flex h-full flex-col overflow-hidden rounded-xl2 border border-line bg-panel transition-all duration-500 ease-cine hover:-translate-y-1.5 hover:shadow-[0_18px_40px_rgba(0,0,0,0.5)]">
                 {/* Imagen completa + badge de fecha montado */}
                 <div className="relative">
                   {n.image ? (

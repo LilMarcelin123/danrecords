@@ -1,104 +1,78 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ArrowUpRight, Music2 } from "lucide-react";
-import { artists, artistsByLetter, type Artist } from "@/lib/artists";
+import { ArrowUpRight } from "lucide-react";
+import { artists } from "@/lib/artists";
 import ArtistPhoto from "@/components/ArtistPhoto";
 import Reveal from "@/components/Reveal";
 
 /**
- * CATALOGO — dos columnas.
- * Izquierda: ficha dinamica del artista (sin recarga, con animaciones).
- * Derecha: buscador alfabetico inspirado en Warner Records.
+ * ROSTER — cuadricula editorial de artistas.
+ * Fotos grandes a sangre, nombre y genero sobre degradado, zoom + flecha al pasar el mouse.
+ * Desktop: 2 tarjetas grandes arriba y 3 abajo (grid de 6 columnas).
  */
 export default function ArtistCatalog() {
-  const [selected, setSelected] = useState<Artist>(artists[0]);
-  const groups = artistsByLetter();
-
   return (
-    <section className="mx-auto max-w-7xl px-6 py-24">
+    <section id="roster" className="mx-auto max-w-7xl scroll-mt-24 px-6 py-24 md:py-32">
       <Reveal>
-        <p className="mb-2 font-display text-xs uppercase tracking-[0.4em] text-accent">Artists</p>
-        <h2 className="mb-12 font-display text-4xl font-bold md:text-6xl">El corazón de DanRecords</h2>
+        <div className="mb-12 flex flex-col gap-4 md:mb-16 md:flex-row md:items-end md:justify-between">
+          <div>
+            <p className="mb-3 font-display text-xs uppercase tracking-[0.45em] text-accent">Artists</p>
+            <h2 className="font-display text-5xl font-extrabold leading-none tracking-tight md:text-7xl">
+              El corazón
+              <br />
+              <span className="text-white/40">de DanRecords</span>
+            </h2>
+          </div>
+          <p className="max-w-sm text-mute">
+            {artists.length} artistas, un mismo ecosistema. Conoce su música, sus videos y lo que viene.
+          </p>
+        </div>
       </Reveal>
 
-      <div className="grid gap-12 lg:grid-cols-2">
-        {/* IZQUIERDA — informacion dinamica */}
-        <div className="lg:sticky lg:top-24 lg:self-start">
-          <AnimatePresence mode="wait">
-            <motion.article
-              key={selected.slug}
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              className="glass overflow-hidden rounded-xl2"
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-6 lg:gap-5">
+        {artists.map((a, i) => {
+          const big = i < 2;
+          return (
+            <Reveal
+              key={a.slug}
+              delay={(i % 3) * 0.08}
+              className={`${big ? "lg:col-span-3" : "lg:col-span-2"} ${i === artists.length - 1 && artists.length % 2 === 1 ? "sm:col-span-2 lg:col-span-2" : ""}`}
             >
-              <ArtistPhoto artist={selected} fit="natural" className="rounded-t-xl2" />
-              <div className="p-7">
-                <p className="text-xs uppercase tracking-[0.3em] text-accent">{selected.genre}</p>
-                <h3 className="mt-1 font-display text-3xl font-bold">{selected.name}</h3>
-                <p className="mt-4 leading-relaxed text-mute">{selected.bio}</p>
-                <p className="mt-4 flex items-center gap-2 text-sm">
-                  <Music2 size={15} className="text-accent" />
-                  Último lanzamiento: <span className="text-navy">{selected.lastRelease}</span>
-                </p>
-                <div className="mt-6 flex flex-wrap gap-2 text-sm">
-                  {Object.entries({
-                    Spotify: selected.links.spotify,
-                    "Apple Music": selected.links.appleMusic,
-                    YouTube: selected.links.youtube,
-                    Instagram: selected.links.instagram,
-                  }).map(([label, href]) => (
-                    <a
-                      key={label}
-                      href={href}
-                      className="rounded-full border border-line px-3 py-1 text-mute transition-colors hover:border-accent hover:text-accent"
-                    >
-                      {label}
-                    </a>
-                  ))}
-                </div>
-                <Link
-                  href={`/artists/${selected.slug}`}
-                  className="mt-7 inline-flex items-center gap-2 rounded-full bg-brand px-6 py-2.5 font-medium text-white transition-transform duration-300 hover:scale-[1.03]"
-                >
-                  Ver Perfil Completo <ArrowUpRight size={16} />
-                </Link>
-              </div>
-            </motion.article>
-          </AnimatePresence>
-        </div>
+              <Link
+                href={`/artists/${a.slug}`}
+                className={`group relative block overflow-hidden rounded-xl2 bg-panel ${
+                  big ? "aspect-[4/5] lg:aspect-[6/5]" : "aspect-[4/5]"
+                }`}
+              >
+                <ArtistPhoto
+                  artist={a}
+                  className="absolute inset-0 h-full w-full transition-transform duration-[900ms] ease-cine group-hover:scale-[1.06]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/25 to-transparent opacity-90 transition-opacity duration-500 group-hover:opacity-100" />
+                <div className="absolute inset-0 ring-1 ring-inset ring-white/5 transition-all duration-500 group-hover:ring-accent/40" />
 
-        {/* DERECHA — buscador alfabetico */}
-        <div>
-          {Array.from(groups.entries()).map(([letter, list]) => (
-            <Reveal key={letter} className="mb-8">
-              <p className="mb-3 border-b border-line pb-2 font-display text-2xl font-bold text-accent">
-                {letter}
-              </p>
-              <ul className="space-y-1">
-                {list.map((a) => (
-                  <li key={a.slug}>
-                    <button
-                      onClick={() => setSelected(a)}
-                      className={`group flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-left transition-colors duration-300 ${
-                        selected.slug === a.slug ? "bg-panel text-accent" : "hover:bg-panel"
-                      }`}
-                    >
-                      <span className="font-display text-lg">{a.name}</span>
-                      <span className="text-xs text-mute opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        {a.genre}
-                      </span>
-                    </button>
-                  </li>
-                ))}
-              </ul>
+                <span className="absolute right-5 top-5 flex h-11 w-11 -translate-y-2 items-center justify-center rounded-full bg-white text-ink opacity-0 transition-all duration-500 ease-cine group-hover:translate-y-0 group-hover:opacity-100">
+                  <ArrowUpRight size={20} />
+                </span>
+
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <p className="mb-2 text-[11px] uppercase tracking-[0.35em] text-accent">{a.genre}</p>
+                  <h3
+                    className={`font-display font-extrabold leading-none tracking-tight text-white transition-transform duration-500 ease-cine group-hover:-translate-y-1 ${
+                      big ? "text-4xl md:text-6xl" : "text-3xl md:text-4xl"
+                    }`}
+                  >
+                    {a.name}
+                  </h3>
+                  <p className="mt-3 flex items-center gap-1.5 text-sm text-white/0 transition-colors duration-500 group-hover:text-white/80">
+                    Ver perfil <ArrowUpRight size={14} />
+                  </p>
+                </div>
+              </Link>
             </Reveal>
-          ))}
-        </div>
+          );
+        })}
       </div>
     </section>
   );

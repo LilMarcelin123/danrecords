@@ -70,7 +70,7 @@ export default function ArtistsHero() {
               className="h-full w-full transition-transform duration-700 ease-cine group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-ink/0 transition-colors duration-500 group-hover:bg-ink/55" />
-            <div className="absolute inset-x-0 bottom-0 translate-y-3 p-6 opacity-0 transition-all duration-500 ease-cine group-hover:translate-y-0 group-hover:opacity-100">
+            <div className="absolute inset-x-0 top-0 hidden -translate-y-3 p-6 pt-28 opacity-0 md:block transition-all duration-500 ease-cine group-hover:translate-y-0 group-hover:opacity-100">
               <p className="font-display text-2xl font-bold text-white">{artist.name}</p>
               <p className="mt-1 flex items-center gap-1 text-sm text-white/90">
                 Explorar <ArrowUpRight size={15} />
@@ -79,6 +79,34 @@ export default function ArtistsHero() {
           </button>
         ))}
       </div>
+
+      {/* Degradado inferior: funde el mosaico con el resto de la pagina oscura */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 z-10 h-[55%] bg-gradient-to-t from-paper via-paper/70 to-transparent" />
+
+      {/* Titular + CTA (aparece cuando termina la intro) */}
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.1, delay: 4.6, ease: [0.16, 1, 0.3, 1] }}
+        className="pointer-events-none absolute inset-x-0 bottom-0 z-20 mx-auto flex max-w-7xl flex-col gap-6 px-6 pb-12 md:flex-row md:items-end md:justify-between md:pb-16"
+      >
+        <div>
+          <p className="mb-3 font-display text-xs uppercase tracking-[0.45em] text-accent">
+            Dan Creative · DanRecords
+          </p>
+          <h1 className="font-display text-5xl font-extrabold leading-[0.95] tracking-tight text-white md:text-7xl lg:text-8xl">
+            Música, tecnología
+            <br />
+            <span className="text-white/45">y creatividad.</span>
+          </h1>
+        </div>
+        <a
+          href="#roster"
+          className="pointer-events-auto inline-flex w-fit items-center gap-2 rounded-full bg-white px-7 py-3.5 font-medium text-ink transition-all duration-300 ease-cine hover:-translate-y-0.5 hover:bg-accent hover:text-white"
+        >
+          Conoce a los artistas <ArrowUpRight size={18} />
+        </a>
+      </motion.div>
 
       {/* Logotipo central persistente (misma posicion que el vinilo de la intro) */}
       <div ref={logoRef} className="pointer-events-none absolute inset-0 z-10 flex items-center justify-center">
